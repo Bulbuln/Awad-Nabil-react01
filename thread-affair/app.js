@@ -83,4 +83,45 @@ class NewsletterForm extends React.Component {
 
 const newsletterContainer = document.querySelector('.home-newsletter');
 // React recipe?
-ReactDOM.render(<NewsletterForm></NewsletterForm>, newsletterContainer);
+
+ReactDOM.createRoot(newsletterContainer).render(<NewsletterForm></NewsletterForm>);
+
+class AddCartButton extends React.Component {
+  state = {
+    added: true,
+    busy: false
+  }
+
+  onClickHandle = () => {
+
+    this.setState({
+      busy:true
+    });
+
+    setTimeout(() => {
+      this.setState({
+        added: !this.state.added,
+        busy: false
+      })
+    }, 2000)
+    console.log(this.props.productId)
+  }
+
+  render() {
+    return <button className={` product-control ${this.state.added ? 'active' : ''}`} 
+        onClick={this.onClickHandle}
+          type="button"
+          disabled={this.state.busy}
+          >
+      {this.state.added === true ? 'Add to cart' : 'Remove from cart'}
+      {this.state.busy? <i className="fas fa-spinner"></i> : ''}
+    </button>
+  }
+}
+
+const productTileControls = document.querySelectorAll('.product-tile-controls')
+
+productTileControls.forEach((productTileControl, index )=> {
+  ReactDOM.createRoot(productTileControl).render(<AddCartButton productId={index}></AddCartButton>);
+  
+});

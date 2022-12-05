@@ -533,21 +533,23 @@ a {
   font-weight: 500;
 }
 
-.product-tile .product-a2c {
-  background-color: transparent;
-  border: 1px solid #ff6b6b;
+.product-tile .product-control {
   padding: 10px 25px;
   border-radius: 25px;
   font-family: 'Roboto', 'sans-serif';
   text-transform: uppercase;
-  color: #ff6b6b;
+  color: #fff;
+  background-color: #ff6b6b;
   transition: color linear 0.2s, background-color linear 0.2s;
   cursor: pointer;
 }
 
-.product-tile .product-a2c:hover {
-  color: #fff;
+.product-tile .product-control:hover,
+.product-tile .product-control.active {
+  
   background-color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+  color: #fff;
 }
 
 .home-catalog-preview footer {
